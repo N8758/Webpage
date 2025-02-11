@@ -20,14 +20,25 @@ const ContactForm = () => {
     <form onSubmit={formik.handleSubmit} className="max-w-lg mx-auto space-y-4">
       {["name", "email", "message"].map((field) => (
         <div key={field}>
-          <input
-            type={field === "message" ? "textarea" : "text"}
-            name={field}
-            placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-            onChange={formik.handleChange}
-            value={formik.values[field]}
-            className="w-full p-3 border rounded-md"
-          />
+          {field === "message" ? (
+            <textarea
+              name={field}
+              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+              onChange={formik.handleChange}
+              value={formik.values[field]}
+              className="w-full p-3 border rounded-md"
+              rows={4} // specify rows for better UI
+            />
+          ) : (
+            <input
+              type="text"
+              name={field}
+              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+              onChange={formik.handleChange}
+              value={formik.values[field]}
+              className="w-full p-3 border rounded-md"
+            />
+          )}
           {formik.touched[field] && formik.errors[field] && (
             <p className="text-red-500 text-sm">{formik.errors[field]}</p>
           )}
