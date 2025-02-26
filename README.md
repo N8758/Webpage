@@ -1,4 +1,4 @@
-![Image Description](image-file-name.png)
+![Image Description](Screenshot.png)
 
 
 
